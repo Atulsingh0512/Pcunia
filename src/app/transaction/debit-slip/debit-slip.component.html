@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Debit Page - Banking System</title>
+
+    <!-- Include Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="card">
+
+                    <div class="card-header bg-primary text-white text-center">
+
+                        <h4>Enter details to transfer</h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <form (ngSubmit)='debit()' #transForm="ngForm">
+
+                            <div *ngIf="errorMsg" class="text text-danger"><p>{{errorMsg}}</p></div>
+                            <div class="form-group">
+
+                                <label for="username">Account Holder Information:</label>
+
+                                <input type="text" class="form-control" id="username" #username="ngModel"
+                                    [(ngModel)]="transModel1.username" name="username"
+                                    placeholder="Account holder's name" [disabled]="true" required>
+                                
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="accountId"> Your Account Id:</label>
+
+                                <input type="number" class="form-control" id="accountId" #accountId="ngModel"
+                                    [(ngModel)]="transModel1.accountId" name="accountId"
+                                    placeholder="Account number" required>
+                                    <div *ngIf="accountId.touched && accountId.errors">
+                                        <div class="alert alert-danger" *ngIf="accountId.errors?.['required']">
+                                            Annual Income  can't be empty
+                                        </div>
+                                    </div>
+                                    <div *ngIf="accountId.touched && accountId.errors">
+                                        <div class="alert alert-danger" *ngIf="accountId.errors?.['minlength']">
+                                            Enter valid income
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="dateTime">Date and Time:</label>
+
+                                    <input type="datetime-local" class="form-control" id="dateTime" #dateTime="ngModel"
+                                        [(ngModel)]="transModel1.dateTime" name="dateTime" required>
+                                        <div *ngIf="dateTime.touched && accountId.errors">
+                                            <div class="alert alert-danger" *ngIf="dateTime.errors?.['required']">
+                                                Date and time  can't be empty
+                                            </div>
+                                        </div>
+                                        
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="transferAmount">Transfer Amount:</label>
+
+                                    <input type="number" class="form-control" id="transferAmount"
+                                        #transferAmount="ngModel" [(ngModel)]="transModel1.transferAmount"
+                                        name="transferAmount" required placeholder="Amount in numerical formats">
+                                    
+                                        <div *ngIf="transferAmount.touched && transferAmount.errors">
+                                            <div class="alert alert-danger" *ngIf="transferAmount.errors?.['required']">
+                                                transfer Amout can't be empty
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="recevierAccount">Recevier's username:</label>
+
+                                <input type="text" class="form-control" id="recevierAccount" #recevierAccount="ngModel"
+                                    [(ngModel)]="transModel1.receiverAccount" name="receiverAccount" required
+                                    placeholder="Recevier Account username">
+                                    <div *ngIf="recevierAccount.touched && recevierAccount.errors">
+                                        <div class="alert alert-danger" *ngIf="recevierAccount.errors?.['required']">
+                                           receiver Account  can't be empty
+                                        </div>
+                                    </div>
+                                    <div *ngIf="recevierAccount.touched && recevierAccount.errors">
+                                        <div class="alert alert-danger" *ngIf="recevierAccount.errors?.['minlength']">
+                                            Enter valid receiver Account name
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="remarks">Remarks:</label>
+
+                                <input type="text" class="form-control" id="remarks" #remarks="ngModel"
+                                    [(ngModel)]="transModel1.remarks" name="remarks" required
+                                    placeholder="Enter any remarks">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="pin">Enter your Pin:</label>
+
+                                <input type="number" class="form-control" id="pin" #pin="ngModel"
+                                    [(ngModel)]="transModel1.pin" name="pin" required
+                                    placeholder="Account holder's Pin">
+                                    <div *ngIf="pin.touched && pin.errors">
+                                        <div class="alert alert-danger" *ngIf="pin.errors?.['required']">
+                                           Pin  is required
+                                        </div>
+                                    </div>
+                                
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="phone">Contact Information:</label>
+
+                                <input type="text" class="form-control" id="phone" #phone="ngModel"
+                                    [(ngModel)]="transModel1.phone" name="phone" required [disabled]="true"
+                                    placeholder="Contact number" >
+                                    <div *ngIf="phone.touched && phone.errors">
+                                        <div class="alert alert-danger" *ngIf="phone.errors?.['required']">
+                                           Phone is required
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]="transForm.invalid">Submit</button>
+
+                        </form>
+                    </div>
+                    <div class="bg-warning test-dark mt-5 mb-5 p-4" [hidden]='!submitted'></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Include Bootstrap JS (optional) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

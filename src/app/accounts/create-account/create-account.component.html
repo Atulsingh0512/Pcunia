@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Banking System - Account Creation</title>
+
+    <!-- Include Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="card">
+
+                    <div class="card-header bg-primary text-white text-center">
+
+                        <h4>Enter your Details</h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <form (ngSubmit)='createAcc()' #accForm="ngForm" enctype="multipart/form-data">
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="name">Name</label>
+
+                                    <input type="text" class="form-control" id="name" 
+                                    #name="ngModel" [(ngModel)]="userAccount1.name" name="name" placeholder="Enter your name"
+                                        required minlength="4" [disabled]="true">
+                                    <div *ngIf="name.touched && name.errors">
+                                        <div class="alert alert-danger" *ngIf="name.errors?.['required']">
+                                            name is empty
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="name.touched && name.errors">
+                                        <div class="alert alert-danger" *ngIf="name.errors?.['minlength']">
+                                            name is very short.require minm 4 characters
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="dob">Date of Birth</label>
+
+                                    <input type="date" class="form-control" id="dob" #dob="ngModel"
+                                        [(ngModel)]="userAccount1.dob" name="dob" required>
+                                        <div *ngIf="dob.touched && dob.errors">
+                                            <div class="alert alert-danger" *ngIf="dob.errors?.['required']">
+                                                dob is empty
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="accType">Account Type:</label>
+
+                                <select class="form-control" id="accType" #accType="ngModel"
+                                    [(ngModel)]="userAccount1.accType" name="accType" required>
+
+                                    <option value="" disabled>Select your Account</option>
+                                    <option value="savings">Savings Account</option>
+
+                                    <option value="current">Current Account</option>
+
+                                    <option value="salary">Salary Account</option>
+
+                                    <!-- Add more options as needed -->
+
+                                </select>
+                                <div *ngIf="accType.touched && accType.errors">
+                                    <div class="alert alert-danger" *ngIf="accType.errors?.['required']">
+                                        accType should be selected
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="address">Address</label>
+
+                                <textarea class="form-control" id="address" #address="ngModel"
+                                    [(ngModel)]="userAccount1.address" name="address" rows="3"
+                                    placeholder="Enter your address" required minlength="8"></textarea>
+                                
+                                    <div *ngIf="address.touched && address.errors">
+                                        <div class="alert alert-danger" *ngIf="address.errors?.['required']">
+                                            address is empty
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="address.touched && address.errors">
+                                        <div class="alert alert-danger" *ngIf="address.errors?.['minlength']">
+                                            address is very short.require minm 8 characters
+                                        </div>
+
+                                    </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="email">Email</label>
+
+                                <input type="email" class="form-control" id="email" #email="ngModel"
+                                    [(ngModel)]="userAccount1.email" name="email" placeholder="Enter your email"  [disabled]="true" required>
+                                    <div *ngIf="email.touched && email.errors">
+                                        <div class="alert alert-danger" *ngIf="email.errors?.['required']">
+                                            email is empty
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="phone">Phone Number</label>
+
+                                <input type="text" class="form-control" id="phone" #phone="ngModel"
+                                    [(ngModel)]="userAccount1.phone" name="phone" placeholder="Enter your phone number"
+                                    required minlength="10">
+                                    <div *ngIf="phone.touched && phone.errors">
+                                        <div class="alert alert-danger" *ngIf="phone.errors?.['required']">
+                                            phone is empty
+                                        </div>
+                                    </div>
+                                    <div *ngIf="phone.touched && phone.errors">
+                                        <div class="alert alert-danger" *ngIf="phone.errors?.['minlength']">
+                                            phone should consist of 10 digit
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="pin">Set your Pin</label>
+
+                                <input type="number" class="form-control" id="pin" #pin="ngModel"
+                                    [(ngModel)]="userAccount1.pin" name="pin" placeholder="Set your Pin" required minlength="4">
+                                    <div *ngIf="pin.touched && pin.errors">
+                                        <div class="alert alert-danger" *ngIf="pin.errors?.['required']">
+                                            Pin is empty
+                                        </div>
+                                    </div>
+                                    <div *ngIf="pin.touched && pin.errors">
+                                        <div class="alert alert-danger" *ngIf="pin.errors?.['minlength']">
+                                            Pin should be 4 minimum length
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="balance">Default Balance</label>
+
+                                <input type="number" class="form-control" id="balance" #balance="ngModel"
+                                    [(ngModel)]="userAccount1.balance" name="balance" [disabled]="true">
+                                    
+                                    
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="fatherName">Father's Name</label>
+
+                                    <input type="text" class="form-control" id="fatherName" #fatherName="ngModel"
+                                        [(ngModel)]="userAccount1.fatherName" name="fatherName"
+                                        placeholder="Enter your father's name" required minlength="3">
+                                        <div *ngIf="fatherName.touched && fatherName.errors">
+                                            <div class="alert alert-danger" *ngIf="fatherName.errors?.['required']">
+                                                phone is empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="fatherName.touched && fatherName.errors">
+                                            <div class="alert alert-danger" *ngIf="fatherName.errors?.['minlength']">
+                                                father's name is very short! Check once
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="motherName">Mother's Name</label>
+
+                                    <input type="text" class="form-control" id="motherName" #motherName="ngModel"
+                                        [(ngModel)]="userAccount1.motherName" name="motherName"
+                                        placeholder="Enter your mother's name" required minlength="3">
+                                        <div *ngIf="motherName.touched && motherName.errors">
+                                            <div class="alert alert-danger" *ngIf="motherName.errors?.['required']">
+                                                mother's name is empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="motherName.touched && fatherName.errors">
+                                            <div class="alert alert-danger" *ngIf="motherName.errors?.['minlength']">
+                                                mother's name is very short! Check once
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="panCard">PAN Card Number</label>
+
+                                    <input type="number" class="form-control" id="panCard" #panCard="ngModel"
+                                        [(ngModel)]="userAccount1.panCard" name="panCard"
+                                        placeholder="Enter your PAN card number" required minlength="10">
+                                        <div *ngIf="panCard.touched && panCard.errors">
+                                            <div class="alert alert-danger" *ngIf="panCard.errors?.['required']">
+                                                Pancard's number can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="panCard.touched && panCard.errors">
+                                            <div class="alert alert-danger" *ngIf="panCard.errors?.['minlength']">
+                                                Pancard number consist of 10 digit
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="aadhaarCard">Aadhaar Card Number</label>
+
+                                    <input type="number" class="form-control" id="aadhaarCard" #aadhaarCard="ngModel"
+                                        [(ngModel)]="userAccount1.aadhaarCard" name="aadhaarCard"
+                                        placeholder="Enter your PAN card number" required minlength="12">
+                                        <div *ngIf="aadhaarCard.touched && aadhaarCard.errors">
+                                            <div class="alert alert-danger" *ngIf="aadhaarCard.errors?.['required']">
+                                                AadhaarCard's number can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="aadhaarCard.touched && aadhaarCard.errors">
+                                            <div class="alert alert-danger" *ngIf="aadhaarCard.errors?.['minlength']">
+                                                AadhaarCard's number consist of 10 digit
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="nominee">Enter Nominee's Name</label>
+
+                                    <input type="text" class="form-control" id="nominee" #nominee="ngModel"
+                                        [(ngModel)]="userAccount1.nominee" name="nominee"
+                                        placeholder="Enter Nominee's Name" required minlength="3">
+                                        <div *ngIf="nominee.touched && nominee.errors">
+                                            <div class="alert alert-danger" *ngIf="nominee.errors?.['required']">
+                                                Nominee's name can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="nominee.touched && nominee.errors">
+                                            <div class="alert alert-danger" *ngIf="nominee.errors?.['minlength']">
+                                                nominee's name is short.Check Once
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="nomineeRelation">Relationship with nominee</label>
+
+                                    <input type="text" class="form-control" id="nomineeRelation"
+                                        #nomineeRelation="ngModel" [(ngModel)]="userAccount1.nomineeRelation"
+                                        name="nomineeRelation" placeholder="Nominee's Relationship"
+                                        required minlength="3">
+                                        <div *ngIf="nomineeRelation.touched && nomineeRelation.errors">
+                                            <div class="alert alert-danger" *ngIf="nomineeRelation.errors?.['required']">
+                                                Nominee's relation can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="nomineeRelation.touched && nomineeRelation.errors">
+                                            <div class="alert alert-danger" *ngIf="nomineeRelation.errors?.['minlength']">
+                                                Enter valid relation
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="occupation">Enter Your Occupation</label>
+
+                                    <input type="text" class="form-control" id="occupation" #occupation="ngModel"
+                                        [(ngModel)]="userAccount1.occupation" name="occupation"
+                                        placeholder="Enter Your Occupation" required minlength="4">
+                                        <div *ngIf="occupation.touched && occupation.errors">
+                                            <div class="alert alert-danger" *ngIf="occupation.errors?.['required']">
+                                                Occupation's  can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="occupation.touched && occupation.errors">
+                                            <div class="alert alert-danger" *ngIf="occupation.errors?.['minlength']">
+                                                Enter valid occupation
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <label for="annualIncome">Annual Income</label>
+
+                                    <input type="number" class="form-control" id="annualIncome" #annualIncome="ngModel"
+                                        [(ngModel)]="userAccount1.annualIncome" name="annualIncome"
+                                        placeholder="Enter Annual Income" required minlength="5">
+                                        <div *ngIf="annualIncome.touched && annualIncome.errors">
+                                            <div class="alert alert-danger" *ngIf="annualIncome.errors?.['required']">
+                                                Annual Income  can't be empty
+                                            </div>
+                                        </div>
+                                        <div *ngIf="annualIncome.touched && annualIncome.errors">
+                                            <div class="alert alert-danger" *ngIf="annualIncome.errors?.['minlength']">
+                                                Enter valid income
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <!-- <div class="form-group">
+
+                                    <label for="aadhaarImage">Upload Aadhaar Card</label>
+
+                                    <input type="file" class="form-control-file" id="aadhaarImage"
+                                    (change)="onFileSelected($event, 'aadhaarImage')" accept="pdf/*" name="aadhaarImage" required>
+                                       
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="residenceImage">Upload Residence Proof</label>
+
+                                    <input type="file" class="form-control-file" id="residenceImagee"
+                                    (change)="onFileSelected($event, 'residenceImage')" accept="pdf/*" name="residenceImage" required>
+                                        
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="panImage">Upload Pan Proof</label>
+
+                                    <input type="file" class="form-control-file" id="panImage" 
+                                    (change)="onFileSelected($event, 'panImage')" accept="image/*" name="panImage" required>
+                                        
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="profile">Upload photo</label>
+
+                                    <input type="file" class="form-control-file" id="profile" 
+                                    (change)="onFileSelected($event, 'profile')" accept="image/*" name="profile" required>
+                                       
+
+                                </div> -->
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]="accForm.invalid">Create
+                                Account</button>
+
+                        </form>
+
+                    </div>
+                    <div class="bg-warning test-dark mt-5 mb-5 p-4" [hidden]='!submitted'></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

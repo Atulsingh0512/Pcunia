@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Passbook Account Summary</title>
+
+    <!-- Include Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <h2 class="text-center mb-4">Passbook Account Summary</h2>
+
+        <table *ngIf="!errorMsg && userAccount1" class="table table-bordered">
+
+            <tbody>
+
+                <tr>
+
+                    <th>Account Holder Information</th>
+
+                    <td>
+
+                        <strong>Name:</strong> {{userAccount1.name}}<br>
+
+                        <strong>Account Id:</strong> <br>
+
+                        <strong>Account Type:</strong> {{userAccount1.accType}}<br>
+
+                        <strong>Date Of Birth:</strong> {{userAccount1.dob}}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Current Balance</th>
+
+                    <td>
+
+                        <strong>Balance:</strong> ${{userAccount1.balance}}<br>
+
+                        <strong>Currency:</strong> USD
+
+                    </td>
+
+                </tr>
+                
+                <tr>
+
+                    <th>Family details</th>
+
+                    <td>
+
+                        <strong>Father's name:</strong> {{userAccount1.fatherName}}<br>
+
+                        <strong>Mother's name:</strong> {{userAccount1.motherName}}
+
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <th>Necessary Info</th>
+
+                    <td>
+
+                        <strong>PAN Card No. :</strong> {{userAccount1.panCard}}<br>
+
+                        <strong>Aaadhar Card No. :</strong> {{userAccount1.aadhaarCard}}
+                        <strong>Occupation :</strong> {{userAccount1.occupation}}
+                        <strong>Annual Income :</strong> {{userAccount1.annualIncome}}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Interest Information</th>
+
+                    <td>
+
+                        <strong>Interest Rate:</strong> 1.5%<br>
+
+                        <strong>Accumulated Interest:</strong> $75.00
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Account Status</th>
+
+                    <td>
+
+                        <strong>Status:</strong> Active<br>
+
+                        No special remarks
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Transaction Limits</th>
+
+                    <td>
+
+                        <strong>Daily Withdrawal Limit:</strong> $1,000.00<br>
+
+                        <strong>Daily Transfer Limit:</strong> $2,000.00
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Account Statements</th>
+
+                    <td>
+
+                        <a routerLink="/passbook/transactiondetails" class="btn btn-primary">Click Here</a>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Contact Information</th>
+
+                    <td>
+
+                        <strong>Your Email:</strong> {{userAccount1.email}}
+                        <strong>Your Contact No.:</strong> {{userAccount1.phone}}
+                        <strong>Address:</strong> {{userAccount1.address}}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Other Account Details</th>
+
+                    <td>
+
+                        <strong>Nominee:</strong> {{userAccount1.nominee}}<br>
+
+                        <strong>Nominee's Relation</strong> {{userAccount1.nomineeRelation}}
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p class="text-center"><em>Printing Date: 2023-08-31</em></p>
+
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

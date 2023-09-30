@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Request</title>
+
+    <!-- Include Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <h2 class="text-center mb-4">Loan Request</h2>
+
+        <form (ngSubmit)='reqLoan()' #accForm="ngForm">
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label for="fullName">Full Name:</label>
+
+                    <input type="text" class="form-control" id="name" 
+                    #fullName="ngModel" [(ngModel)]="loanData1.name" name="name" placeholder="Full name">
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label for="contactDetails">Contact Details:</label>
+
+                    <input type="phone" class="form-control" id="phone" placeholder="Phone number"
+                    #phone="ngModel" [(ngModel)]="loanData1.phone" name="phone">
+
+                    <input type="email" class="form-control mt-2" id="email" placeholder="Email address"
+                    #email="ngModel" [(ngModel)]="loanData1.email" name="email">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="residentialAddress">Residential Address:</label>
+
+                <input type="text" class="form-control" id="residentialAddress" placeholder="Residential address"
+                #residentialAddress="ngModel" [(ngModel)]="loanData1.residentialAddress" name="residentialAddress">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="loanType">Loan Type:</label>
+
+                <select class="form-control" id="loanType"
+                #loanType="ngModel" [(ngModel)]="loanData1.loanType" name="loanType">
+
+                    <option value="personal">Personal Loan</option>
+
+                    <option value="home">Home Loan</option>
+
+                    <option value="car">Car Loan</option>
+
+                    <!-- Add more options as needed -->
+
+                </select>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label for="loanAmount">Loan Amount:</label>
+
+                    <input type="text" class="form-control" id="loanAmount" placeholder="Loan amount"
+                    #loanAmount="ngModel" [(ngModel)]="loanData1.loanAmount" name="loanAmount">
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label for="loanPurpose">Loan Purpose:</label>
+
+                    <input type="text" class="form-control" id="loanPurpose" placeholder="Loan purpose"
+                    #loanPurpose="ngModel" [(ngModel)]="loanData1.loanPurpose" name="loanPurpose">
+
+                </div>
+
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label for="occupation">Enter Your Occupation</label>
+
+                    <input type="text" class="form-control" id="occupation" placeholder="Enter Your Occupation"
+                    #occupation="ngModel" [(ngModel)]="loanData1.occupation" name="occupation">
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label for="annualIncome">Annual Income</label>
+
+                    <input type="text" class="form-control" id="annualIncome" placeholder="Enter Annual Income"
+                    #annualIncome="ngModel" [(ngModel)]="loanData1.annualIncome" name="annualIncome">
+
+                </div>
+
+            </div>
+            <!-- <div class="form-group">
+
+                <label for="residenceImage">Upload Residence Proof</label>
+
+                <input type="file" class="form-control-file" id="residenceImage"
+                #residenceImage="ngModel" [(ngModel)]="loanData1.residenceImage" name="residenceImage">
+
+            </div>
+            <div class="form-group">
+
+                <label for="panImage">Upload Pan card</label>
+
+                <input type="file" class="form-control-file" id="panImage"
+                #panImage="ngModel" [(ngModel)]="loanData1.panImage" name="panImage">
+
+            </div>
+            <div class="form-group">
+
+                <label for="incomeImage">Upload Income Proof</label>
+
+                <input type="file" class="form-control-file" id="incomeImage"
+                #incomeImage="ngModel" [(ngModel)]="loanData1.incomeImage" name="incomeImage">
+
+            </div>
+            <div class="form-group">
+
+                <label for="signImage">Upload Signature</label>
+                <input type="file" class="form-control-file" id="signImage"
+                #signImage="ngModel" [(ngModel)]="loanData1.signImage" name="signImage">
+
+            </div> -->
+
+            <!-- Add more form fields for income details, employment details, credit history, etc. -->
+
+            <div class="form-group">
+
+                <label for="declaration">Declaration and Consent:</label>
+
+                <textarea class="form-control" id="declaration" rows="3"
+                    placeholder="I hereby declare that..."
+                    #declaration="ngModel" [(ngModel)]="loanData1.declaration" name="declaration"></textarea>
+
+            </div>
+
+            <div class="form-group form-check">
+
+                <input type="checkbox" class="form-check-input" id="consent">
+
+                <label class="form-check-label" for="consent">I consent to the bank conducting...</label>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="accForm.invalid">Submit Request</button>
+
+        </form>
+
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

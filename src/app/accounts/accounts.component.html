@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <title>Banking System - Account</title>
+
+ <!-- Include Bootstrap CSS -->
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <a class="navbar-brand" href="#">Banking System</a>
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+   
+     <span class="navbar-toggler-icon"></span>
+   
+    </button>
+   
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   
+     <ul class="navbar-nav ml-auto">
+   
+      <li class="nav-item">
+   
+       <a class="nav-link" href="/home">Home</a>
+   
+      </li>
+   
+      <li class="nav-item">
+   
+       <a class="nav-link" routerLink="/accounts">Accounts</a>
+   
+      </li>
+      <li class="nav-item">
+   
+       <a class="nav-link" routerLink="/passbook">Passbook</a>
+   
+      </li>
+   
+      <li class="nav-item">
+   
+       <a class="nav-link" routerLink="/transaction">Transactions</a>
+   
+      </li>
+      <li class="nav-item">
+   
+       <a class="nav-link" routerLink="/loan">Loan</a>
+   
+      </li>
+   
+      <li class="nav-item">
+   
+       <a class="nav-link" routerLink="/login">Logout</a>
+   
+      </li>
+   
+     </ul>
+   
+    </div>
+   
+   </nav>
+
+<div class="container mt-5">
+
+ <div class="row justify-content-center">
+
+  <div class="col-md-6">
+
+   <div class="card">
+
+    <div class="card-header text-center">
+
+     <h4>Account</h4>
+
+    </div>
+
+    <div class="card-body">
+    
+      
+     <a *ngIf="!userAccount1 || errorMsg" class="nav-link" routerLink="createaccount"><button type="button" class="btn btn-success btn-block mb-3" data-toggle="modal" data-target="#createAccountModal">Create Account</button></a>
+     
+     <a *ngIf="userAccount1 && !errorMsg" class="nav-link" routerLink="update"><button type="button" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#updateNameModal"> Update Details</button></a>
+
+      <button type="button" *ngIf="userAccount1 && !errorMsg" (click)="deleteAcc()" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteAccountModal">Delete Account</button>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Create Account Modal -->
+
+<div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="createAccountModalLabel">Create Account</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your account creation form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-success">Create Account</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Update Name Modal -->
+
+<div class="modal fade" id="updateNameModal" tabindex="-1" role="dialog" aria-labelledby="updateNameModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="updateNameModalLabel">Update Name</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your update name form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-primary">Update Name</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Update Contact Modal -->
+
+<div class="modal fade" id="updateContactModal" tabindex="-1" role="dialog" aria-labelledby="updateContactModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="updateContactModalLabel">Update Contact</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your update contact form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-primary">Update Details</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Update Address Modal -->
+
+<div class="modal fade" id="updateAddressModal" tabindex="-1" role="dialog" aria-labelledby="updateAddressModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="updateAddressModalLabel">Update Address</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your update address form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-primary">Update Address</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Delete Account Modal -->
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <p>Are you sure you want to delete your account?</p>
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-danger">Delete Account</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Include Bootstrap JS (optional) -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

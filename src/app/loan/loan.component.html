@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <title>Banking System - Loans</title>
+
+ <!-- Include Bootstrap CSS -->
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <a class="navbar-brand" href="#">Banking System</a>
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+       
+         <span class="navbar-toggler-icon"></span>
+       
+        </button>
+       
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+       
+         <ul class="navbar-nav ml-auto">
+       
+          <li class="nav-item">
+       
+           <a class="nav-link" href="/home">Home</a>
+       
+          </li>
+       
+          <li class="nav-item">
+       
+           <a class="nav-link" routerLink="/accounts">Accounts</a>
+       
+          </li>
+          <li class="nav-item">
+       
+           <a class="nav-link" routerLink="/passbook">Passbook</a>
+       
+          </li>
+       
+          <li class="nav-item">
+       
+           <a class="nav-link" routerLink="/transaction">Transactions</a>
+       
+          </li>
+          <li class="nav-item">
+       
+           <a class="nav-link" routerLink="/loan">Loan</a>
+       
+          </li>
+       
+          <li class="nav-item">
+       
+           <a class="nav-link" routerLink="/login">Logout</a>
+       
+          </li>
+       
+         </ul>
+       
+        </div>
+       
+       </nav>
+
+<div class="container mt-5">
+
+ <div class="row justify-content-center">
+
+  <div class="col-md-6">
+
+   <div class="card">
+
+    <div class="card-header text-center">
+
+     <h4>Loans</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <a routerLink="loanrequest" class="btn btn-primary btn-block">Loan Request</a>
+
+        <a routerLink="loandisbursal" class="btn btn-success btn-block">Loan Disbursal</a>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Loan Request Modal -->
+
+<div class="modal fade" id="loanRequestModal" tabindex="-1" role="dialog" aria-labelledby="loanRequestModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="loanRequestModalLabel">Loan Request</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your loan request form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-primary">Request Loan</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Loan Disbursal Modal -->
+
+<div class="modal fade" id="loanDisbursalModal" tabindex="-1" role="dialog" aria-labelledby="loanDisbursalModalLabel" aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+
+  <div class="modal-content">
+
+   <div class="modal-header">
+
+    <h5 class="modal-title" id="loanDisbursalModalLabel">Loan Disbursal</h5>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+     <span aria-hidden="true">&times;</span>
+
+    </button>
+
+   </div>
+
+   <div class="modal-body">
+
+    <!-- Your loan disbursal form here -->
+
+   </div>
+
+   <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <button type="button" class="btn btn-success">Disburse Loan</button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<!-- Include Bootstrap JS (optional) -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
